@@ -6,25 +6,28 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : TotalCharacterController
 {
-    [Header("부스트 속도")][Range(1f, 10f)]
-    public float speed = 1f;
-
     private Camera _camera;
     private void Awake()
     {
         _camera = Camera.main;
     }
 
-    public void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("OnMove" + value.ToString());
-        Vector2 moveInput = value.Get<Vector2>().normalized;
-        CallMoveEvent(moveInput);
+            Vector2 moveInput = context.ReadValue<Vector2>().normalized;
+            Debug.Log(context.ReadValue<Vector2>());
+            CallMoveEvent(moveInput);
     }
 
-    public void OnRun(InputValue value)
+    public void OnRun(InputAction.CallbackContext context)
     {
-        Debug.Log("OnRun" + value.ToString());
-        // OnMove 
+        if (context.phase == InputActionPhase.Started)
+        {
+            CallRunEvent();
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            CallRunStopEvent();
+        }
     }
 }

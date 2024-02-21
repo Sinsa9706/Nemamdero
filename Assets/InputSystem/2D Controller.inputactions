@@ -16,9 +16,9 @@
                 },
                 {
                     "name": "Run",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "a64955ba-7ada-4461-9959-e165876a8485",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

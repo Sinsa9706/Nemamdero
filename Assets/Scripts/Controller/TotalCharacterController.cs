@@ -6,15 +6,21 @@ using UnityEngine;
 public class TotalCharacterController : MonoBehaviour
 {
     public event Action<Vector2> OnMoveEvent;
-    public event Action<Vector2> OnRunEvent;
+    public event Action OnRunEvent;
+    public event Action OnRunStopEvent;
 
     public void CallMoveEvent(Vector2 direction)
     {
         OnMoveEvent?.Invoke(direction);
     }
 
-    public void CallRunEvent(Vector2 direction)
+    public void CallRunEvent()
     {
-        OnRunEvent?.Invoke(direction);
+        OnRunEvent?.Invoke();
+    }
+
+    public void CallRunStopEvent()
+    {
+        OnRunStopEvent?.Invoke();
     }
 }
