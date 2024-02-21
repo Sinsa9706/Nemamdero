@@ -6,17 +6,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : TotalCharacterController
 {
-    private Camera _camera;
+    private Camera _Camera;
+
     private void Awake()
     {
-        _camera = Camera.main;
+        _Camera = Camera.main;
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-            Vector2 moveInput = context.ReadValue<Vector2>().normalized;
-            Debug.Log(context.ReadValue<Vector2>());
-            CallMoveEvent(moveInput);
+        Vector2 moveInput = context.ReadValue<Vector2>().normalized;
+        CallMoveEvent(moveInput);
     }
 
     public void OnRun(InputAction.CallbackContext context)

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    private static ButtonManager instance;
+    public static ButtonManager instance;
 
     private void Awake()
     {
@@ -15,5 +15,10 @@ public class ButtonManager : MonoBehaviour
     public void StartBtn()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void ExitBtn()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }

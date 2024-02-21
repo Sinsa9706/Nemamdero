@@ -13,14 +13,16 @@ public class Movement : MonoBehaviour
 
     private float speed;
 
-    private TotalCharacterController _controller;
+    private TotalCharacterController _Controller;
     private Vector2 _movementDirection = Vector2.zero;
-    private Rigidbody2D _rigidbody;
+    private Rigidbody2D _Rigidbody;
+    private SpriteRenderer _PlayerSpriteRenderer;
 
     private void Awake()
     {
-        _controller = GetComponent<TotalCharacterController>();
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _Controller = GetComponent<TotalCharacterController>();
+        _Rigidbody = GetComponent<Rigidbody2D>();
+        _PlayerSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         speed = basespeed;
     }
 
@@ -31,21 +33,22 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        _controller.OnMoveEvent += Move;
-        _controller.OnRunEvent += Run;
-        _controller.OnRunStopEvent += RunStop;
+        _Controller.OnMoveEvent += Move;
+        _Controller.OnRunEvent += Run;
+        _Controller.OnRunStopEvent += RunStop;
     }
 
     private void Move(Vector2 direction)
     {
         _movementDirection = direction;
+        _PlayerSpriteRenderer.flipX = direction.x < 0;
     }
 
     private void ApplyMovement(Vector2 direction)
     {
         direction = direction * speed;
 
-        _rigidbody.velocity = direction;
+        _Rigidbody.velocity = direction;
     }
 
     private void Run()
