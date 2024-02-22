@@ -16,6 +16,14 @@ public class PlayerInputController : TotalCharacterController
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>().normalized;
+        if(moveInput.x < 0)
+        {
+            CallLookLeftEvent(moveInput);
+        }
+        else if (moveInput.x > 0)
+        {
+            CallLookRightEvent(moveInput);
+        }
         CallMoveEvent(moveInput);
     }
 

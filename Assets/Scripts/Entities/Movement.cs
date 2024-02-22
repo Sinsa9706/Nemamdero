@@ -36,12 +36,14 @@ public class Movement : MonoBehaviour
         _Controller.OnMoveEvent += Move;
         _Controller.OnRunEvent += Run;
         _Controller.OnRunStopEvent += RunStop;
+        _Controller.OnLookLeftEvent += LookLeft;
+        _Controller.OnLookRightEvent += LookRight;
     }
 
     private void Move(Vector2 direction)
     {
         _movementDirection = direction;
-        _PlayerSpriteRenderer.flipX = direction.x < 0;
+        //_PlayerSpriteRenderer.flipX = direction.x < 0;
     }
 
     private void ApplyMovement(Vector2 direction)
@@ -59,5 +61,15 @@ public class Movement : MonoBehaviour
     private void RunStop()
     {
         speed = basespeed;
+    }
+
+    private void LookLeft(Vector2 direction)
+    {
+        _PlayerSpriteRenderer.flipX = direction.x < 0;
+    }
+
+    private void LookRight(Vector2 direction)
+    {
+        _PlayerSpriteRenderer.flipX = direction.x > 0;
     }
 }

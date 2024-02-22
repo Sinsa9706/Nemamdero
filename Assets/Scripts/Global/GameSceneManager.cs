@@ -19,5 +19,6 @@ public class GameSceneManager : MonoBehaviour
         Instantiate(Resources.Load("Prefabs/ButtonManager"));
         Instantiate(Resources.Load("Prefabs/Player"));
         Instantiate(Resources.Load("Prefabs/GameSceneCanvas"));
+        Instantiate(Resources.Load("Prefabs/GameLevel"));
     }
 }
